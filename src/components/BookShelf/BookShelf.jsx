@@ -44,7 +44,17 @@ function BookShelf() {
           <button type='submit'>Submit</button>
         </form>
       </div>
-      <div className='bookCardsDiv'>{/* Book cards will display here */}</div>
+      <div className='bookCardsDiv'>
+        <ul>
+          {books.map((book) => (
+            <li key={books.indexOf(book)}>
+              <p>
+                {book.title} {book.author}
+              </p>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 }
