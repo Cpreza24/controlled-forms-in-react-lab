@@ -1,21 +1,23 @@
 import React, { useState } from 'react';
 
 function BookShelf() {
-  const [books, setBooks] = useState([
-    {
-      title: '',
-      author: '',
-    },
-  ]);
+  const [books, setBooks] = useState([]);
+  const [newBook, setNewBook] = useState({
+    title: '',
+    author: '',
+  });
 
   const handleInputChange = (e) => {
-    const newBook = e.target.value;
-    setBooks({ ...books, [e.target.name]: newBook });
-    console.log(newBook);
+    setNewBook({ ...newBook, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setBooks([...books, newBook]);
+    setNewBook({
+      title: '',
+      author: '',
+    });
   };
 
   return (
@@ -23,10 +25,11 @@ function BookShelf() {
       <div className='formDiv'>
         <h3>Add a Book</h3>
         {/* Form will go here */}
-        <form onSubmit={() => handleSubmit}>
+        <form onSubmit={handleSubmit}>
           <input
             type='text'
             name='title'
+            value={newBook.title}
             onChange={handleInputChange}
             placeholder='Book title'
           />
@@ -34,6 +37,7 @@ function BookShelf() {
             type='text'
             name='author'
             id=''
+            value={newBook.author}
             onChange={handleInputChange}
             placeholder='Author name'
           />
