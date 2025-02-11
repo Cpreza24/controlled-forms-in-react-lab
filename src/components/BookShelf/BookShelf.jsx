@@ -47,8 +47,8 @@ function BookShelf() {
       <div className='bookCardsDiv'>
         {books.map((book, index) => (
           <div className='bookCard' key={index}>
-            <p>Title: {book.title}</p>
-            <p>Author: {book.author}</p>
+            <h2>{book.title}</h2>
+            <p>by {book.author}</p>
           </div>
         ))}
       </div>
