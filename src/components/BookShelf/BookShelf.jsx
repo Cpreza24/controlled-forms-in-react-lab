@@ -45,15 +45,12 @@ function BookShelf() {
         </form>
       </div>
       <div className='bookCardsDiv'>
-        <ul>
-          {books.map((book) => (
-            <li key={books.indexOf(book)}>
-              <p>
-                {book.title} {book.author}
-              </p>
-            </li>
-          ))}
-        </ul>
+        {books.map((book, index) => (
+          <div className='bookCard' key={index}>
+            <p>Title: {book.title}</p>
+            <p>Author: {book.author}</p>
+          </div>
+        ))}
       </div>
     </div>
   );
